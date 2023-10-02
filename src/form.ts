@@ -53,14 +53,6 @@ export class Form<FormData extends FieldValues> {
     return this.fields[name].reset();
   }
 
-  handleSubmit(callback: (data: FormData) => void) {
-    const onSubmit = () => {
-      callback(this.getValues());
-    };
-
-    return onSubmit;
-  }
-
   extend<ExtendFormData extends FieldValues>(
     options: FormOptions<ExtendFormData>,
   ) {

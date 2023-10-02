@@ -14,6 +14,7 @@ type ControllerProps<
       value: FormData[Name];
       onChange: (event: FormData[Name]) => void;
       onBlur: () => void;
+      ref: React.Ref<HTMLElement>;
     };
   }) => React.ReactElement;
 };
@@ -34,6 +35,11 @@ export function Controller<
         field.change(event);
       },
       onBlur: () => {},
+      ref: (node) => {
+        if (node) {
+          field.element = node;
+        }
+      },
     },
   });
 }

@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -9,12 +11,15 @@ const form = new Form({
   fields: {
     name: '',
     email: '',
-    age: null as number | null,
   },
 });
 
-export function Base() {
-  const { control, handleSubmit } = useForm(form);
+export function SetFocus() {
+  const { control, handleSubmit, setFocus } = useForm(form);
+
+  useEffect(() => {
+    setFocus('name');
+  }, [setFocus]);
 
   const onSubmit = handleSubmit((data, event) => {
     event.preventDefault();
@@ -53,28 +58,14 @@ export function Base() {
       <Controller
         name="email"
         control={control}
-        render={({ field: { name, value, onChange, onBlur } }) => (
+        render={({ field: { name, value, onChange, onBlur, ref } }) => (
           <TextField
             label="Email"
             variant="outlined"
+            inputRef={ref}
             name={name}
             value={value}
             onChange={(event) => onChange(event.target.value)}
-            onBlur={onBlur}
-          />
-        )}
-      />
-
-      <Controller
-        name="age"
-        control={control}
-        render={({ field: { name, value, onChange, onBlur } }) => (
-          <TextField
-            label="Age"
-            variant="outlined"
-            name={name}
-            value={value || ''}
-            onChange={(event) => onChange(Number(event.target.value))}
             onBlur={onBlur}
           />
         )}

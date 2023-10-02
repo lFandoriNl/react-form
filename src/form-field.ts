@@ -3,7 +3,9 @@ import { EventEmitter } from './event-emitter';
 export class FormField<T> extends EventEmitter<{
   changed: { value: T };
 }> {
-  public value: T;
+  value: T;
+
+  element?: HTMLElement;
 
   constructor(private initialValue: T) {
     super();

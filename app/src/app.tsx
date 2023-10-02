@@ -10,7 +10,9 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 import CssBaseline from '@mui/material/CssBaseline';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+
 import { Base } from './base';
+import { SetFocus } from './set-focus';
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -37,7 +39,10 @@ export function App() {
 
         <Drawer variant="permanent" open>
           <List component="nav">
-            {[{ value: 'base', content: 'Base' }].map(({ value, content }) => (
+            {[
+              { value: 'base', content: 'Base' },
+              { value: 'set-focus', content: 'Set focus' },
+            ].map(({ value, content }) => (
               <ListItemButton
                 key={value}
                 selected={state === value}
@@ -72,6 +77,7 @@ export function App() {
                   }}
                 >
                   {state === 'base' && <Base />}
+                  {state === 'set-focus' && <SetFocus />}
                 </Paper>
               </Grid>
             </Grid>
