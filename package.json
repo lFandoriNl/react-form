@@ -1,0 +1,46 @@
+{
+  "name": "@fandorin/react-form",
+  "version": "0.0.0",
+  "description": "Fast and extensible react forms manager",
+  "author": "lFandoriNl",
+  "license": "ISC",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "module": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "check-types": "tsc --noEmit",
+    "test": "vitest",
+    "clean": "rm -r dist"
+  },
+  "dependencies": {
+    "react": "18.2.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "6.7.3",
+    "@typescript-eslint/parser": "6.7.3",
+    "eslint": "8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "@types/react": "^18.2.21",
+    "typescript": "^5.2.2",
+    "tsup": "^7.2.0",
+    "vitest": "^0.34.4"
+  },
+  "packageManager": "pnpm@8.7.6"
+}
