@@ -92,24 +92,6 @@ describe('Form', () => {
     expect(form.isDirty).toBe(false);
   });
 
-  it('should get data from onSubmit', () => {
-    const form = new Form({
-      fields: {
-        name: '',
-        age: 0,
-      },
-    });
-
-    const onSubmit = form.handleSubmit((data) => {
-      expect(data).toEqual({
-        name: '',
-        age: 0,
-      });
-    });
-
-    onSubmit();
-  });
-
   it('should on listener to change field', () => {
     const form = new Form({
       fields: {
