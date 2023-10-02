@@ -42,15 +42,12 @@ export function SetFocus() {
       <Controller
         name="name"
         control={control}
-        render={({ field: { name, value, onChange, onBlur, ref } }) => (
+        render={({ field: { ref, ...field } }) => (
           <TextField
             label="Name"
             variant="outlined"
             inputRef={ref}
-            name={name}
-            value={value}
-            onChange={(event) => onChange(event.target.value)}
-            onBlur={onBlur}
+            {...field}
           />
         )}
       />
@@ -58,15 +55,12 @@ export function SetFocus() {
       <Controller
         name="email"
         control={control}
-        render={({ field: { name, value, onChange, onBlur, ref } }) => (
+        render={({ field: { ref, ...field } }) => (
           <TextField
             label="Email"
             variant="outlined"
             inputRef={ref}
-            name={name}
-            value={value}
-            onChange={(event) => onChange(event.target.value)}
-            onBlur={onBlur}
+            {...field}
           />
         )}
       />

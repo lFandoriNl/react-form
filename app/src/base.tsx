@@ -9,7 +9,7 @@ const form = new Form({
   fields: {
     name: '',
     email: '',
-    age: null as number | null,
+    age: '',
   },
 });
 
@@ -37,46 +37,24 @@ export function Base() {
       <Controller
         name="name"
         control={control}
-        render={({ field: { name, value, onChange, onBlur, ref } }) => (
-          <TextField
-            label="Name"
-            variant="outlined"
-            inputRef={ref}
-            name={name}
-            value={value}
-            onChange={(event) => onChange(event.target.value)}
-            onBlur={onBlur}
-          />
+        render={({ field }) => (
+          <TextField label="Name" variant="outlined" {...field} />
         )}
       />
 
       <Controller
         name="email"
         control={control}
-        render={({ field: { name, value, onChange, onBlur } }) => (
-          <TextField
-            label="Email"
-            variant="outlined"
-            name={name}
-            value={value}
-            onChange={(event) => onChange(event.target.value)}
-            onBlur={onBlur}
-          />
+        render={({ field }) => (
+          <TextField label="Email" variant="outlined" {...field} />
         )}
       />
 
       <Controller
         name="age"
         control={control}
-        render={({ field: { name, value, onChange, onBlur } }) => (
-          <TextField
-            label="Age"
-            variant="outlined"
-            name={name}
-            value={value || ''}
-            onChange={(event) => onChange(Number(event.target.value))}
-            onBlur={onBlur}
-          />
+        render={({ field }) => (
+          <TextField label="Age" variant="outlined" {...field} />
         )}
       />
 

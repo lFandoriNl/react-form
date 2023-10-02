@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Control, FieldValues } from './types';
 import { useWatch } from './use-watch';
 
@@ -12,9 +12,12 @@ type ControllerProps<
     field: {
       name: Name;
       value: FormData[Name];
-      onChange: (event: FormData[Name]) => void;
+      onChange: (
+        event: ChangeEvent<HTMLInputElement>,
+        value?: FormData[Name],
+      ) => void;
       onBlur: () => void;
-      ref: React.Ref<HTMLElement>;
+      ref: React.Ref<any>;
     };
   }) => React.ReactElement;
 };
@@ -31,8 +34,18 @@ export function Controller<
     field: {
       name,
       value: state[name],
-      onChange: (event) => {
-        field.change(event);
+      onChange: (event, value) => {
+        if (value) {
+          return field.change(value);
+        }
+
+        if (event.target.type === 'checkbox') {
+          // @ts-expect-error
+          return field.change(event.target.checked);
+        } else {
+          // @ts-expect-error
+          return field.change(event.target.value);
+        }
       },
       onBlur: () => {},
       ref: (node) => {
